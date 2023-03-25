@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import Tinder from './components/Tinder';
 import Favorites from './components/Favorites';
+import Favorites from './components/GetIngredientsList';
 import Home from './components/Home';
 import GetIngredients from './components/GetIngredients';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

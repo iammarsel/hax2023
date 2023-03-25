@@ -27,10 +27,12 @@ export default function GetIngredients({ navigation }) {
 
       {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
       
-      <Pressable onPress={handleChooseImage} style={styles.button}>
-        <Text style={styles.button_text}>Choose Image</Text>
+      <Pressable onPress={handleChooseImage} style={styles.fridge}>
+      <Image
+        style={styles.logo}
+        source={require('../assets/fridge.png')}
+      />
       </Pressable>
-
       <Pressable onPress={() => {
         navigation.replace("GetIngredientsList")
       }} style={styles.button}>
@@ -65,6 +67,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
     backgroundColor: '#03c2fc',
+    marginTop: 20
+  },
+  fridge: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 10,
+    elevation: 3,
     marginTop: 20
   },
   button_text: {
