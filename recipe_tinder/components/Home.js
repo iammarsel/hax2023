@@ -11,6 +11,21 @@ export default function Home({ navigation }) {
       }} style={styles.button}>
         <Text style={styles.button_text}>Go to Tinder</Text>
       </Pressable>
+
+      <Pressable onPress={() => {
+        navigation.replace("GetIngredients")
+      }} style={styles.button}>
+        <Text style={styles.button_text}>Go to GetIngredients</Text>
+      </Pressable>
+      
+      <Pressable onPress={() => {
+        navigation.replace("Favorites")
+      }} style={styles.button}>
+        <Text style={styles.button_text}>Go to Favorites</Text>
+      </Pressable>
+
+
+
       <View style={styles.button_container}>
       </View>
     </View>

@@ -1,36 +1,110 @@
-import { StyleSheet, Text, View, Button,Pressable,Dimensions } from 'react-native';
+import { SafeAreaView,StyleSheet, Text, View,Pressable,Dimensions,ScrollView } from 'react-native';
+import * as Progress from 'react-native-progress';
 
-export default function Favorites({ navigation }) {
+
+export default function Home({ navigation }) {
   
   return (
+    <SafeAreaView style={{flex: 1}}>
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome</Text>
+      <Text style={styles.title}>Favorite Recipes</Text>
+      <Progress.Bar progress={0.1} width={300} height={10} color={'green'} />
+      <Text style={styles.title2}>10% XP | Level 1</Text>
 
-      <Pressable onPress={() => {
-        navigation.replace("Home")
+        <ScrollView>
+        <View style={styles.recipe}>
+            <Text style={styles.title2}>Butter Chicken</Text>
+            <Text style={styles.difficulty}>Medium</Text>
+            <Pressable onPress={() => {
+                 navigation.replace("Tinder")
+            }} style={styles.button}>
+            <Text style={styles.button_text}>Details</Text>
+            </Pressable>
+        </View>
+
+        </ScrollView>
+      <View style={styles.bottomView}>
+          <Pressable onPress={() => {
+        navigation.replace("GetIngredients")
       }} style={styles.button}>
-        <Text style={styles.button_text}>Go back home</Text>
+        <Text style={styles.button_text}>Home</Text>
       </Pressable>
-      <View style={styles.button_container}>
+      <Pressable onPress={() => {
+        navigation.replace("Tinder")
+      }} style={styles.button}>
+        <Text style={styles.button_text}>Explore</Text>
+      </Pressable>
+      <Pressable onPress={() => {
+        navigation.replace("Favorites")
+      }} style={styles.buttona}>
+        <Text style={styles.button_text}>Favorites</Text>
+      </Pressable>
       </View>
     </View>
+    </SafeAreaView>
   );
 }
 const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#000000',
     flex: 1,
     paddingTop: height*0.1,
-    paddingHorizontal: 40
+    alignItems: 'center',
+    paddingHorizontal: 0
+  },
+  
+  progressBar: {
+    height: 20,
+    flexDirection: "row",
+    width: '100%',
+    backgroundColor: 'white',
+    borderColor: '#000',
+    borderWidth: 2,
+    borderRadius: 5
+  },
+  bottomView: {
+    width: '100%',
+    height: 70,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#cccccc',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', //Here is the trick
+    bottom: 0, //Here is the trick
   },
   title: {
     fontSize: 40,
     lineHeight: 40,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: '#03c2fc',
+    color: '#3ccf63',
+  },
+  recipe:{
+    width: '100%',
+    borderRadius: 10,
+    height: 70,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#cccccc',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  difficulty:{
+    fontSize: 15,
+    lineHeight: 20,
+    fontWeight: 'bold',
+    paddingHorizontal:10,
+    letterSpacing: 0.25,
+    color: '#f58142',
+  },    
+  title2: {
+    fontSize: 15,
+    lineHeight: 20,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: '#3ccf63',
   },
   button_container: {
     marginTop: height*0.6
@@ -39,10 +113,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
-    paddingHorizontal: 32,
+    marginHorizontal:10,
+    paddingHorizontal: 25,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#03c2fc'
+    backgroundColor: '#3ccf63'
+  },
+  buttona: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    marginHorizontal:10,
+    paddingHorizontal: 25,
+    borderRadius: 10,
+    elevation: 3,
+    backgroundColor: '#358c2d'
   },
   button_text: {
     fontSize: 16,

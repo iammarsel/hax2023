@@ -7,7 +7,7 @@ export default function GetIngredients({ navigation }) {
       <Text style={styles.title}>Ingridients Here</Text>
 
       <Pressable onPress={() => {
-        navigation.replace("Favorites")
+        navigation.replace("GetIngredients")
       }} style={styles.button}>
         <Text style={styles.button_text}>Go to Favorites</Text>
       </Pressable>
