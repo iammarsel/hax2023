@@ -1,4 +1,5 @@
 import { SafeAreaView,StyleSheet, Text, View,Pressable,Dimensions,ScrollView } from 'react-native';
+import React from 'react';
 import * as Progress from 'react-native-progress';
 
 
@@ -6,6 +7,7 @@ export default function Home({ navigation }) {
   const [xp, onChangeXP] = React.useState(0.1);
   const [level, onChangeLevel] = React.useState(1);
 
+  
 
   return (
     <SafeAreaView style={{flex: 1}}>
