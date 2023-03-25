@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View, Button,Pressable,Dimensions } from 'react-native';
 
-export default function GetIngredients({ navigation }) {
+export default function Home({ navigation }) {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Ingridients Here</Text>
+      <Text style={styles.title}>Welcome</Text>
 
       <Pressable onPress={() => {
-        navigation.replace("Favorites")
+        navigation.replace("Tinder")
       }} style={styles.button}>
-        <Text style={styles.button_text}>Go to Favorites</Text>
+        <Text style={styles.button_text}>Go to Tinder</Text>
       </Pressable>
       <View style={styles.button_container}>
       </View>
