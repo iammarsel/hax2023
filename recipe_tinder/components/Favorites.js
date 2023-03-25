@@ -3,13 +3,16 @@ import * as Progress from 'react-native-progress';
 
 
 export default function Home({ navigation }) {
-  
+  const [xp, onChangeXP] = React.useState(0.1);
+  const [level, onChangeLevel] = React.useState(1);
+
+
   return (
     <SafeAreaView style={{flex: 1}}>
     <View style={styles.container}>
       <Text style={styles.title}>Favorite Recipes</Text>
-      <Progress.Bar progress={0.1} width={300} height={10} color={'green'} />
-      <Text style={styles.title2}>10% XP | Level 1</Text>
+      <Progress.Bar progress={xp} width={300} height={10} color={'green'} />
+      <Text style={styles.title2}>{xp*100}% XP | Level {level}</Text>
 
         <ScrollView>
         <View style={styles.recipe}>

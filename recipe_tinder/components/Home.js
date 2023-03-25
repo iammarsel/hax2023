@@ -9,13 +9,13 @@ export default function Home({ navigation }) {
       <Pressable onPress={() => {
         navigation.replace("Tinder")
       }} style={styles.button}>
-        <Text style={styles.button_text}>Go to Tinder</Text>
+        <Text style={styles.button_text}>Explore Recipes</Text>
       </Pressable>
 
       <Pressable onPress={() => {
         navigation.replace("GetIngredients")
       }} style={styles.button}>
-        <Text style={styles.button_text}>Go to GetIngredients</Text>
+        <Text style={styles.button_text}>Create new Request</Text>
       </Pressable>
       
       <Pressable onPress={() => {
