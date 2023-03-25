@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Pressable, Dimensions, Image, TextInput, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Button, Pressable, Dimensions, Image, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export default function AA({ navigation }) {
@@ -14,34 +14,32 @@ export default function AA({ navigation }) {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Ingredients Here</Text>
+    <View style={styles.container}>
+      <View contentContainerStyle={styles.scrollContainer}>
+        <Text style={styles.title}>Ingredients Here</Text>
 
-      <View style={styles.listContainer}>
-        {ingredients.map((item, index) => (
-          <Text style={styles.ingredientsText} key={index}>- {item}</Text>
-        ))}
+        <ScrollView style={styles.listContainer}>
+          {ingredients.map((item, index) => (
+            <Text style={styles.ingredientsText} key={index}>- {item}</Text>
+          ))}
+        </ScrollView>
+
+        <TextInput
+          style={styles.input}
+          placeholder="Add new ingredient..."
+          placeholderTextColor="#a9a9a9"
+          value={text}
+          onChangeText={(value) => setText(value)}
+          onSubmitEditing={handleAdd}
+        />
+
+        <Pressable onPress={() => {
+          navigation.replace("Tinder")
+        }} style={styles.button}>
+          <Text style={styles.button_text}>Go to the List</Text>
+        </Pressable>
       </View>
-
-      <TextInput
-        style={styles.input}
-        placeholder="Add new ingredient..."
-        placeholderTextColor="#a9a9a9"
-        value={text}
-        onChangeText={(value) => setText(value)}
-        onSubmitEditing={handleAdd}
-      />
-
-      <Pressable onPress={() => {
-        navigation.replace("Tinder")
-      }} style={styles.button}>
-        <Text style={styles.button_text}>Go to the List</Text>
-      </Pressable>
-      <View >
-    <Text style={styles.padding}>Go to the List</Text>
     </View>
-
-    </ScrollView>
   );
 }
 
@@ -49,17 +47,21 @@ const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: 150,
     backgroundColor: '#000000',
-    paddingTop: height*0.1,
-    paddingHorizontal: 40,
+  },
+  scrollContainer: {
+    paddingHorizontal: 20,
     alignItems: 'left',
-    flexGrow: 1,
-    paddingBottom: 50
-  },padding:{
-    paddingTop: 800,
+    flexGrow: 0.8,
+    paddingBottom: 50,
+    justifyContent: 'center',
   },
   title: {
     fontSize: 40,
+    padding:0,
     lineHeight: 40,
     fontWeight: 'bold',
     letterSpacing: 0.25,
@@ -75,40 +77,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#03c2fc',
     marginTop: 20
   },
-  fridge: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 10,
-    elevation: 3,
-    marginTop: 20
-  },
-  button_text: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
-  },
-  image: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    marginTop: 20
-  },
-  ingredientsContainer: {
+  listContainer: {
     flex: 1,
     paddingTop: 22,
+    minHeight: 400, 
   },
   ingredientsText: {
     paddingLeft: 0,
-    paddingVertical: 30,
+    paddingVertical: 25,
     fontSize: 25,
     color: 'white',
-    height: 44,
+    height: 40,
   },
   input: {
+    position: 'absolute',
+    top: -90,
+    alignSelf: 'center',
+    width: '100%',
     marginTop: 20,
     paddingHorizontal: 10,
     paddingVertical: 5,

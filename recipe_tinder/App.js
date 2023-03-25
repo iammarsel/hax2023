@@ -18,7 +18,6 @@ export default function App() {
           component={Home}
           options={{
             headerShown: false,
-            gestureEnabled: false
           }}
         />
         <Stack.Screen
@@ -34,6 +33,9 @@ export default function App() {
           name="GetIngredientsList"
           component={GetIngredientsList}
           options={{
+
+            headerShown: false,
+            gestureEnabled: true,
             title: 'GetIngredientsList',
             headerStyle: {
               backgroundColor: '#03c2fc',
@@ -42,7 +44,6 @@ export default function App() {
             headerTitleStyle: {
               fontWeight: 'bold',
             },
-            gestureEnabled: false
           }}
         />
 
