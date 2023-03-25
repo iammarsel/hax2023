@@ -1,4 +1,6 @@
 import { StyleSheet, Text, View, Button,Pressable,Dimensions } from 'react-native';
+import React from 'react';
+
 
 export default function Tinder({ navigation }) {
   
@@ -11,9 +13,18 @@ export default function Tinder({ navigation }) {
       }} style={styles.button}>
         <Text style={styles.button_text}>Go to Tinder</Text>
       </Pressable>
+      <View style={styles.box1} />
+      <Pressable onPress={() => {
+        navigation.replace("GetIngredients")
+      }} style={styles.button}>
+        <Text style={styles.button_text}>Go to Tinder</Text>
+      </Pressable>
       <View style={styles.button_container}>
       </View>
+
+      
     </View>
+    
   );
 }
 const { height } = Dimensions.get('window');
@@ -24,6 +35,12 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: height*0.1,
     paddingHorizontal: 40
+  },
+  box1:{
+    paddingTop:300,
+    marginTop:30,
+    borderRadius:20,
+    backgroundColor:'#03c2fc'
   },
   title: {
     fontSize: 40,
