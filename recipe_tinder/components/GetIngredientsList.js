@@ -18,7 +18,7 @@ export default function AA({ navigation }) {
       <View contentContainerStyle={styles.scrollContainer}>
         <Text style={styles.title}>Ingredients Here</Text>
 
-        <ScrollView style={styles.listContainer}>
+        <ScrollView style={styles.listContainer} showsVerticalScrollIndicator={true}>
           {ingredients.map((item, index) => (
             <Text style={styles.ingredientsText} key={index}>- {item}</Text>
           ))}
@@ -53,10 +53,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
   scrollContainer: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 0,
     alignItems: 'left',
     flexGrow: 0.8,
-    paddingBottom: 50,
+    paddingBottom: 0,
     justifyContent: 'center',
   },
   title: {
@@ -80,14 +80,15 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
     paddingTop: 22,
+    paddingBottom: 20,
     minHeight: 400, 
   },
   ingredientsText: {
     paddingLeft: 0,
-    paddingVertical: 25,
+    paddingVertical: 15,
     fontSize: 25,
     color: 'white',
-    height: 40,
+    height: 60,
   },
   input: {
     position: 'absolute',
