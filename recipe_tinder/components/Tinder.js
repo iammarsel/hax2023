@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, Pressable } from 'react-native';
 
+import { Col, Row, Grid } from "react-native-easy-grid";
+
 const images = [
 
   {
 
-    uri: 'https://cdn.sanity.io/images/ordgikwe/production/3b881f9bcf37a73482e7dcc13fc5b94665256682-1600x1200.jpg?w=768&h=576&auto=format',
+    uri: 'https://www.danishfoodlovers.com/wp-content/uploads/2022/09/Butter-chicken-3.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1',
 
     details: 'Image 1 Details'
 
@@ -14,7 +16,7 @@ const images = [
 
   {
 
-    uri: 'https://d33wubrfki0l68.cloudfront.net/487cd2effeeccb6540871a7f18d1d1e5c9b381d3/d0cfc/docs/assets/native-modules-android-open-project.png',
+    uri: 'https://3.bp.blogspot.com/-ifXTd_QKsrU/VHvGNKhpB2I/AAAAAAAADRg/U0FAG3qKa0U/s1600/1071258.jpg',
 
     details: 'Image 2 Details'
 
@@ -22,15 +24,31 @@ const images = [
 
   {
 
-    uri: 'https://assets.toptal.io/images?url=https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1129718/retina_500x200_cover-cold-dive-into-react-native-a-beginners-tutorial-922a625efe84a4c2d782343b333b0bdb.png',
+    uri: 'https://www.tastingtable.com/img/gallery/the-15-best-additions-to-mac-and-cheese/l-intro-1670687967.jpg',
 
     details: 'Image 3 Details'
 
   },
 
+  {
+
+    uri: 'https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/4NIX5ZMIWJEMPFNYBF3HNG575I.png',
+
+    details: 'Image 1 Details'
+
+  },
+
+  {
+
+    uri: 'https://www.cookingclassy.com/wp-content/uploads/2020/01/chicken-and-rice-15.jpg',
+
+    details: 'Image 1 Details'
+
+  },
+
 ];
 
-export default function Tinder({navigation}) {
+export default function Tinder() {
 
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -70,17 +88,29 @@ export default function Tinder({navigation}) {
 
           <Text style={styles.details}>{item.details}</Text>
 
-          <TouchableOpacity style={styles.removeButton} onPress={() => onRemoveImage(index)}>
+          <Grid style={styles.row} >
 
-            <Text style={styles.removeButtonText}>Remove</Text>
+            <Col>
 
-          </TouchableOpacity>
+              <TouchableOpacity style={styles.addButton} onPress={() => onAddImage(index)}>
 
-          <TouchableOpacity style={styles.addButton} onPress={() => onAddImage(index)}>
+                <Image source={require('E:/USF/USF coding/Hackabull/hax2023/recipe_tinder/assets/heart.png')} style={styles.addButtonImg} />
 
-            <Text style={styles.addButtonText}>Add to another page</Text>
+              </TouchableOpacity>
 
-          </TouchableOpacity>
+            </Col>
+
+            <Col>
+
+              <TouchableOpacity style={styles.removeButton} onPress={() => onRemoveImage(index)}>
+
+                <Image source={require('E:/USF/USF coding/Hackabull/hax2023/recipe_tinder/assets/dislike.png')} style={styles.addButtonImg} />
+
+              </TouchableOpacity>
+
+            </Col>
+
+          </Grid>
 
         </View>
 
@@ -112,15 +142,11 @@ export default function Tinder({navigation}) {
 
       )}
 
-      <Text style={styles.title}>Welcome</Text>
-
       <Pressable onPress={() => {
 
         navigation.navigate("GetIngredients")
 
       }} style={styles.button}>
-
-        <Text style={styles.button_text}>Go to Tinder</Text>
 
       </Pressable>
 
@@ -174,11 +200,49 @@ const styles = StyleSheet.create({
 
   },
 
+  row: {
+
+    marginTop: 10,
+
+    marginLeft: 50,
+
+  },
+
+  addButton: {
+
+    width: 120,
+
+    backgroundColor: '#3dd60f',
+
+    borderRadius: 20,
+
+  },
+
+  addButtonImg: {
+
+    width: 50,
+
+    height: 50,
+
+    marginLeft: 33,
+
+  },
+
+  removeButton: {
+
+    width: 120,
+
+    backgroundColor: '#d60f0f',
+
+    borderRadius: 20,
+
+  },
+
   image: {
 
-    width: 200,
+    width: 300,
 
-    height: 200,
+    height: 300,
 
     resizeMode: 'cover',
 
