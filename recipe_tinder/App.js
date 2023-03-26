@@ -8,6 +8,10 @@ import { MyProvider } from './MyContext';
 import GetIngredients from './components/GetIngredients';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
 const Stack = createNativeStackNavigator();
 
 
@@ -28,7 +32,7 @@ export default function App() {
           component={GetIngredients}
           options={{
             headerShown: false,
-            gestureEnabled: false
+            gestureEnabled: true,
           }}
         />
 
@@ -36,7 +40,6 @@ export default function App() {
           name="GetIngredientsList"
           component={GetIngredientsList}
           options={{
-
             headerShown: false,
             gestureEnabled: true,
             title: 'GetIngredientsList',
@@ -62,7 +65,7 @@ export default function App() {
             headerTitleStyle: {
               fontWeight: 'bold',
             },
-            gestureEnabled: false
+            gestureEnabled: true
           }}
         />
 
@@ -79,7 +82,7 @@ export default function App() {
               fontWeight: 'bold',
             },
             headerShown: false,
-            gestureEnabled: false
+            gestureEnabled: true,
           }}
         />
 

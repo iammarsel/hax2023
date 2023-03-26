@@ -36,17 +36,17 @@ export default function Home({ navigation }) {
         </ScrollView>
       <View style={styles.bottomView}>
           <Pressable onPress={() => {
-        navigation.replace("GetIngredients")
+        navigation.navigate("GetIngredients")
       }} style={styles.button}>
         <Text style={styles.button_text}>Home</Text>
       </Pressable>
       <Pressable onPress={() => {
-        navigation.replace("Tinder")
+        navigation.navigate("Tinder")
       }} style={styles.button}>
         <Text style={styles.button_text}>Explore</Text>
       </Pressable>
       <Pressable onPress={() => {
-        navigation.replace("Favorites")
+        navigation.navigate("Favorites")
       }} style={styles.buttona}>
         <Text style={styles.button_text}>Favorites</Text>
       </Pressable>

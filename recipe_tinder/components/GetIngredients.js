@@ -1,40 +1,55 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Pressable, Dimensions, Image } from 'react-native';
-const ImagePicker = require('react-native-image-picker');
+import { View, Text, StyleSheet, Button, Pressable, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
+import { Camera } from 'expo-camera';
+import * as ImagePicker from 'expo-image-picker';
+
+
 
 export default function GetIngredients({ navigation }) {
   const [imageUri, setImageUri] = useState(null);
 
-  const handleChooseImage = () => {
-    ImagePicker.launchImageLibrary({
-      mediaType: 'photo',
-      includeBase64: false,
-      maxHeight: 200,
-      maxWidth: 200,
-    },
-    (response) => {
-      console.log(response);
-      this.setState({
-        resourcePath: response
-      });
-    },
-  )
+  const requestCameraRollPermission = async () => {
+    const { status } = await Camera.requestPermissionsAsync();
+    if (status !== 'granted') {
+      alert('Permission to access the photo library is required!');
+    }
   };
 
+  const handleChooseImage = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      console.log(result);
+      if (!result.canceled) {
+        setImageUri(result.uri);
+      }
+    } catch (error) {
+      console.log('Image picker error:', error);
+    }
+  };
+  
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Ingredients Here</Text>
-
-      {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
       
-      <Pressable onPress={handleChooseImage} style={styles.fridge}>
+      <Text style={styles.title}>Scan your fridge here:</Text>
+  
+      
+      <TouchableWithoutFeedback onPress={handleChooseImage} style={styles.fridge}>
+      <View>
       <Image
-        style={styles.logo}
-        source={require('../assets/fridge.png')}
-      />
-      </Pressable>
+      style={styles.logo}
+      source={require('../assets/fridge.png')}
+       />
+       </View>      
+      </TouchableWithoutFeedback>
+
+
       <Pressable onPress={() => {
-        navigation.replace("GetIngredientsList")
+        navigation.navigate("GetIngredientsList")
       }} style={styles.button}>
         <Text style={styles.button_text}>Go to the List</Text>
       </Pressable>
@@ -46,7 +61,7 @@ const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#000000',
+    backgroundColor: '#ffffff',
     flex: 1,
     paddingTop: height*0.1,
     paddingHorizontal: 40,
@@ -57,7 +72,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: '#03c2fc',
+    color: '#3ccf63',
   },
   button: {
     alignItems: 'center',
@@ -66,7 +81,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#03c2fc',
+    backgroundColor: '#3ccf63',
     marginTop: 20
   },
   fridge: {
