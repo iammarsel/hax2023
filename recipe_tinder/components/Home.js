@@ -5,48 +5,19 @@ export default function Home({ navigation }) {
 
   return (
     <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-      <View style={styles.container}>
-      <View style={styles.buttons}>
-        <Image
-      style={styles.logo}
-      source={require('../assets/RecipeLabs_logo.png')}
-       />
-       
-       
-         <View style={styles.buttons} >
-        <Pressable
-          onPress={() => {
-            navigation.navigate('GetIngredients');
-          }}style={styles.button}>
-          <Text style={styles.button_text}>Create New Request</Text>
-        </Pressable>
-        </View>
-        <View style={styles.buttons} >
-        <Pressable
-          onPress={() => {
-            navigation.navigate('Tinder');
-          }}style={styles.button}>
-          <Text style={styles.button_text}>Explore Recipes</Text>
-        </Pressable>
-        </View>
-        <View style={styles.buttons} >
-        <Pressable
-          onPress={() => {
-            navigation.navigate('Favorites');
-          }}style={styles.button}>
-          <Text style={styles.button_text}>Go to Favorites</Text>
-        </Pressable>
-          style={styles.textLogo}
-          source={require('../assets/logo.png')}
-        <Text style={styles.title}>
-        Welcome to RecipeLab!
-        </Text>
-        <Text style={styles.title2}>
-        Connect with RecipeLab for your personalized recipe to get inspired in the kitchen.
-        </Text>
-        </View>
-
+    <View style={styles.container}>
         <View style={styles.buttons}>
+          <Image
+            style={styles.logo}
+            source={require('../assets/logo.png')}
+          />
+          <Text style={styles.title}> 
+            Welcome to RecipeLab!
+          </Text>
+          <Text style={styles.title2}>
+            Connect with RecipeLab for your personalized recipe to get inspired in the kitchen.
+          </Text>
+<View style={styles.extra}>
           <Pressable
             onPress={() => {
               navigation.navigate('Tinder');
@@ -54,9 +25,9 @@ export default function Home({ navigation }) {
             style={styles.button}>
             <Text style={styles.button_text}>Explore Recipes</Text>
           </Pressable>
-        </View>
+          </View>
 
-        <View style={styles.buttons}>
+<View style={styles.extra}>
           <Pressable
             onPress={() => {
               navigation.navigate('GetIngredients');
@@ -64,9 +35,9 @@ export default function Home({ navigation }) {
             style={styles.button}>
             <Text style={styles.button_text}>Create New Request</Text>
           </Pressable>
-        </View>
+          </View>
 
-        <View style={styles.buttons}>
+<View style={styles.extra}>
           <Pressable
             onPress={() => {
               navigation.navigate('Favorites');
@@ -74,20 +45,34 @@ export default function Home({ navigation }) {
             style={styles.button}>
             <Text style={styles.button_text}>Go to Favorites</Text>
           </Pressable>
+          </View>
         </View>
-
-      </View>
-    </ImageBackground>
+    </View>
+      </ImageBackground>
   );
 }
 
 const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
+  logo: {
+    width: 170,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  extra: {
+    paddingVertical: 10,
+    width: '90%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 40,
+    paddingHorizontal: 30,
     paddingTop: height * 0.1,
   },
   buttons: {
@@ -119,7 +104,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 20,
     textAlign: 'center',
-    lineHeight: 40,
+    lineHeight: 50,
     fontWeight: '600',
     letterSpacing: 1,
     color: '#000000',
@@ -128,7 +113,7 @@ const styles = StyleSheet.create({
   title2: {
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: 15,
+    fontSize: 20,
     textAlign: 'center',
     fontWeight: '400',
     letterSpacing: 0.5,
