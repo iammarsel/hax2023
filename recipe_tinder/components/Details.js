@@ -1,22 +1,10 @@
 import { SafeAreaView,StyleSheet, Text, View,Pressable,Dimensions,ScrollView } from 'react-native';
-import React, { useContext } from 'react';
+import React from 'react';
 import * as Progress from 'react-native-progress';
-import { MyContext } from '../MyContext';
-export default function Home({ navigation }) {
-    const {level, setLevel,xp,setXP} = useContext(MyContext)
-  
-    const handleIncrease = () => {
-      
-      if (xp >= 0.9){
-        setXP(Number((xp-0.9).toFixed(1)))
-        //setXP(Number((xp).toFixed(1)))
-        setLevel(level+1)
-      } else {
-        setXP(Number((xp + 0.1).toFixed(1)));
-        //setXP(Number((xp).toFixed(1)))
-      }
 
-    };
+export default function Details({ navigation }) {
+
+
   return (
     <SafeAreaView style={{flex: 1}}>
     <View style={styles.container}>
@@ -28,7 +16,9 @@ export default function Home({ navigation }) {
         <View style={styles.recipe}>
             <Text style={styles.title2}>Butter Chicken</Text>
             <Text style={styles.difficulty}>Medium</Text>
-            <Pressable onPress={handleIncrease} style={styles.button}>
+            <Pressable onPress={() => {
+                 navigation.replace("Tinder")
+            }} style={styles.button}>
             <Text style={styles.button_text}>Details</Text>
             </Pressable>
         </View>

@@ -35,7 +35,7 @@ const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#000000',
+    backgroundColor: 'white',
     flex: 1,
     paddingTop: height*0.1,
     paddingHorizontal: 40
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: '#03c2fc',
+    color: '#3ccf63',
   },
   button_container: {
     marginTop: height*0.6
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#03c2fc'
+    backgroundColor: '#3ccf63'
   },
   button_text: {
     fontSize: 16,

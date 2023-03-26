@@ -4,13 +4,16 @@ import Tinder from './components/Tinder';
 import Favorites from './components/Favorites';
 import GetIngredientsList from './components/GetIngredientsList';
 import Home from './components/Home';
+import { MyProvider } from './MyContext';
 import GetIngredients from './components/GetIngredients';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
+
 export default function App() {
   return (
+    <MyProvider>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -82,5 +85,6 @@ export default function App() {
 
       </Stack.Navigator>
     </NavigationContainer>
+    </MyProvider>
   );
 }
