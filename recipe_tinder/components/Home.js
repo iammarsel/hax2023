@@ -81,6 +81,7 @@ paddingTop: 0,
     height: 200,
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: 45  
  },
   button: {
     alignItems: 'center',
