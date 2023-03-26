@@ -75,7 +75,7 @@ export default function App() {
               fontWeight: 'bold',
             },
             headerShown: false,
-            gestureEnabled: false
+            gestureEnabled: true,
           }}
         />
 
