@@ -7,10 +7,15 @@ import Home from './components/Home';
 import GetIngredients from './components/GetIngredients';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen

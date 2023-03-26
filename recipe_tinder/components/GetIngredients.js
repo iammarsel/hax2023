@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, Pressable, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import { Camera } from 'expo-camera';
+import * as ImagePicker from 'expo-image-picker';
+
 
 
 export default function GetIngredients({ navigation }) {
@@ -22,7 +23,8 @@ export default function GetIngredients({ navigation }) {
         aspect: [4, 3],
         quality: 1,
       });
-      if (!result.cancelled) {
+      console.log(result);
+      if (!result.canceled) {
         setImageUri(result.uri);
       }
     } catch (error) {
@@ -35,16 +37,16 @@ export default function GetIngredients({ navigation }) {
       
       <Text style={styles.title}>Scan your fridge here:</Text>
   
-      {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
       
       <TouchableWithoutFeedback onPress={handleChooseImage} style={styles.fridge}>
-        <View>
-          <Image
-            style={styles.logo}
-            source={require('../assets/fridge.png')}
-          />
-        </View>
+      <View>
+      <Image
+      style={styles.logo}
+      source={require('../assets/fridge.png')}
+       />
+       </View>      
       </TouchableWithoutFeedback>
+
 
       <Pressable onPress={() => {
         navigation.navigate("GetIngredientsList")
