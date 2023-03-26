@@ -1,29 +1,56 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Pressable, Dimensions, Image, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
-
-
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Pressable,
+  Dimensions,
+  Image,
+  TextInput,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function AA({ navigation }) {
   const [text, setText] = useState('');
-  const [ingredients, setIngredients] = useState(['Eggs', 'Tomato', 'Chicken', 'Cheese']);
+  const [ingredients, setIngredients] = useState([
+    'Eggs',
+    'Tomato',
+    'Chicken',
+    'Cheese',
+  ]);
 
   const handleAdd = () => {
     if (text.length > 0) {
       setIngredients([...ingredients, text]);
       setText('');
     }
-  }
+  };
+
+  const handleDelete = (index) => {
+    const newIngredients = [...ingredients];
+    newIngredients.splice(index, 1);
+    setIngredients(newIngredients);
+  };
 
   return (
     <View style={styles.container}>
       <View contentContainerStyle={styles.scrollContainer}>
         <Text style={styles.title}>Ingredients Here</Text>
 
+        
         <View style={styles.listContainerWrapper}>
           <ScrollView style={styles.listContainer}>
             {ingredients.map((item, index) => (
-              
+              <View key={index} style={styles.ingredientItem}>
                 <Text style={styles.ingredientsText}>- {item}</Text>
+                <Pressable onPress={() => handleDelete(index)}>
+                  <Ionicons name="close-outline" size={24} color="red" fontWeight="800" paddingHorizontal="6%"  />
+                </Pressable>
+              </View>
             ))}
           </ScrollView>
         </View>
@@ -37,9 +64,12 @@ export default function AA({ navigation }) {
           onSubmitEditing={handleAdd}
         />
 
-        <Pressable onPress={() => {
-          navigation.replace("Tinder")
-        }} style={styles.button}>
+        <Pressable
+          onPress={() => {
+            navigation.replace('Tinder');
+          }}
+          style={styles.button}
+        >
           <Text style={styles.button_text}>Go to the List</Text>
         </Pressable>
       </View>
@@ -48,6 +78,7 @@ export default function AA({ navigation }) {
 }
 
 const { height } = Dimensions.get('window');
+
 
 const styles = StyleSheet.create({
   container: {
@@ -71,6 +102,10 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: '#3ccf63',
   },
+  button_text: {
+    color: '#fff',
+    fontSize: 16,
+  },
   button: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -91,7 +126,16 @@ const styles = StyleSheet.create({
     paddingTop: 22,
     paddingBottom: 20,
   },
+  ingredientItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+
   ingredientsText: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingLeft: 0,
     paddingVertical: 15,
     fontSize: 25,
