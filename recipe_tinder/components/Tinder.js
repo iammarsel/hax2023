@@ -94,7 +94,7 @@ export default function Tinder() {
 
               <TouchableOpacity style={styles.addButton} onPress={() => onAddImage(index)}>
 
-                <Image source={require('E:/USF/USF coding/Hackabull/hax2023/recipe_tinder/assets/heart.png')} style={styles.addButtonImg} />
+                <Image source={require('E:/USF/USF coding/usf_hackathon/hax2023/recipe_tinder/assets/heart.png')} style={styles.addButtonImg} />
 
               </TouchableOpacity>
 
@@ -104,7 +104,7 @@ export default function Tinder() {
 
               <TouchableOpacity style={styles.removeButton} onPress={() => onRemoveImage(index)}>
 
-                <Image source={require('E:/USF/USF coding/Hackabull/hax2023/recipe_tinder/assets/dislike.png')} style={styles.addButtonImg} />
+                <Image source={require('E:/USF/USF coding/usf_hackathon/hax2023/recipe_tinder/assets/dislike.png')} style={styles.addButtonImg} />
 
               </TouchableOpacity>
 
