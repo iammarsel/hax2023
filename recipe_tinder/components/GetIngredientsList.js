@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, Pressable, Dimensions, Image, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+
+
 
 export default function AA({ navigation }) {
   const [text, setText] = useState('');
@@ -13,24 +14,6 @@ export default function AA({ navigation }) {
     }
   }
 
-  const handleRemove = (index) => {
-    const newIngredients = [...ingredients];
-    newIngredients.splice(index, 1);
-    setIngredients(newIngredients);
-  }
-
-  const renderLeftActions = (progress, dragX, index) => {
-    const trans = dragX.interpolate({
-      inputRange: [0, 50, 100],
-      outputRange: [0, 0, 1],
-    });
-    return (
-      <Pressable onPress={() => handleRemove(index)} style={styles.deleteButton}>
-        <MaterialIcons name="delete" size={30} color="white" />
-      </Pressable>
-    );
-  };
-
   return (
     <View style={styles.container}>
       <View contentContainerStyle={styles.scrollContainer}>
@@ -39,6 +22,7 @@ export default function AA({ navigation }) {
         <View style={styles.listContainerWrapper}>
           <ScrollView style={styles.listContainer}>
             {ingredients.map((item, index) => (
+              
                 <Text style={styles.ingredientsText}>- {item}</Text>
             ))}
           </ScrollView>
@@ -47,7 +31,7 @@ export default function AA({ navigation }) {
         <TextInput
           style={styles.input}
           placeholder="Add new ingredient..."
-          placeholderTextColor="#a9a9a9"
+          placeholderTextColor="#3ccf63"
           value={text}
           onChangeText={(value) => setText(value)}
           onSubmitEditing={handleAdd}
