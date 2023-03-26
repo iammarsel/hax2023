@@ -17,18 +17,19 @@ import { Ionicons } from '@expo/vector-icons';
 export default function AA({ navigation }) {
   const [text, setText] = useState('');
   const [ingredients, setIngredients] = useState([
+    'Kiwi',
+    'Lemon',
+    'Mayonnaise',
+    'Yogurt',
     'Eggs',
-    'Tomato',
-    'Chicken',
-    'Cheese',
   ]);
 
-  const handleAdd = () => {
+  function handleAdd() {
     if (text.length > 0) {
       setIngredients([...ingredients, text]);
       setText('');
     }
-  };
+  }
 
   const handleDelete = (index) => {
     const newIngredients = [...ingredients];
@@ -39,7 +40,7 @@ export default function AA({ navigation }) {
   return (
     <View style={styles.container}>
       <View contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.title}>Ingredients Here</Text>
+        <Text style={styles.title}>Selected Ingredients</Text>
 
         
         <View style={styles.listContainerWrapper}>
@@ -70,7 +71,7 @@ export default function AA({ navigation }) {
           }}
           style={styles.button}
         >
-          <Text style={styles.button_text}>Go to the List</Text>
+          <Text style={styles.button_text}>Generate Recipes</Text>
         </Pressable>
       </View>
     </View>
