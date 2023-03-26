@@ -1,10 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, Pressable } from 'react-native';
 
-import { Col, Grid } from "react-native-easy-grid";
-
-import { MyContext } from '../MyContext';
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 const images = [
 
@@ -13,7 +11,6 @@ const images = [
     uri: 'https://www.danishfoodlovers.com/wp-content/uploads/2022/09/Butter-chicken-3.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1',
 
     details: 'Image 1 Details'
-
   },
 
   {
@@ -50,13 +47,8 @@ const images = [
 
 ];
 
-export default function Tinder() {
-  const difficulties = {
-    1:'Easy',
-    2:'Medium',
-    3:'Hard'
-  }
-  const { xp, setXP, level, setLevel, all_recipes, setAll,sorted_recipes, addSorted,removeSorted,fav_recipes, addFav,removeFav,current_recipe,setCurrent } = useContext(MyContext)
+export default function Tinder({navigation}) {
+
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [imageList, setImageList] = useState(images);
@@ -64,7 +56,7 @@ export default function Tinder() {
   const onRemoveImage = (index) => {
 
     const newList = imageList.filter((item, i) => i !== index);
-    removeSorted(current_recipe)
+
     setImageList(newList);
 
   };
@@ -72,10 +64,9 @@ export default function Tinder() {
   const onAddImage = (index) => {
 
     const newList = imageList.filter((item, i) => i !== index);
-    addFav(current_recipe,sorted_recipes[current_recipe])
-    removeSorted(current_recipe)
+
     setSelectedImage(imageList[index]);
-    console.log(fav_recipes)
+
     setImageList(newList);
 
   };
@@ -102,7 +93,7 @@ export default function Tinder() {
 
               <TouchableOpacity style={styles.addButton} onPress={() => onAddImage(index)}>
 
-                <Image source={require('../assets/heart.png')} style={styles.addButtonImg} />
+                <Image source={require('E:/USF/USF coding/usf_hackathon/hax2023/recipe_tinder/assets/heart.png')} style={styles.addButtonImg} />
 
               </TouchableOpacity>
 
@@ -112,7 +103,7 @@ export default function Tinder() {
 
               <TouchableOpacity style={styles.removeButton} onPress={() => onRemoveImage(index)}>
 
-                <Image source={require('../assets/dislike.png')} style={styles.addButtonImg} />
+                <Image source={require('E:/USF/USF coding/usf_hackathon/hax2023/recipe_tinder/assets/dislike.png')} style={styles.removeButtonImg} />
 
               </TouchableOpacity>
 
@@ -150,29 +141,27 @@ export default function Tinder() {
 
       )}
 
-      <Pressable onPress={() => {
-
-        navigation.navigate("GetIngredients")
-
-      }} style={styles.button}>
-
-      </Pressable>
-
       <View style={styles.box1} />
 
-      <Pressable onPress={() => {
-
+      <View style={styles.bottomView}>
+          <Pressable onPress={() => {
         navigation.navigate("GetIngredients")
-
       }} style={styles.button}>
-
-        <Text style={styles.button_text}>Go to Tinder</Text>
-
+        <Text style={styles.button_text}>Home</Text>
       </Pressable>
-
-      <View style={styles.button_container}>
-
+      <Pressable onPress={() => {
+        navigation.navigate("Tinder")
+      }} style={styles.buttona}>
+        <Text style={styles.button_text}>Explore</Text>
+      </Pressable>
+      <Pressable onPress={() => {
+        navigation.navigate("Favorites")
+      }} style={styles.button}>
+        <Text style={styles.button_text}>Favorites</Text>
+      </Pressable>
       </View>
+
+      
 
     </View>
 
@@ -239,25 +228,73 @@ const styles = StyleSheet.create({
   removeButton: {
 
     width: 120,
+    height:50,
 
     backgroundColor: '#d60f0f',
 
     borderRadius: 20,
 
   },
+  removeButtonImg: {
+
+    width: 45,
+
+    height: 45,
+
+    marginLeft: 38,
+    marginTop:3,
+
+  },
 
   image: {
 
-    width: 400,
+    width: 300,
 
-    height: 400,
-
-    paddingBottom: 50,
+    height: 300,
 
     resizeMode: 'cover',
 
     borderRadius: 10,
 
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    marginHorizontal:10,
+    paddingHorizontal: 25,
+    borderRadius: 10,
+    elevation: 3,
+    backgroundColor: '#3ccf63'
+  },
+  button_text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+  buttona: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    marginHorizontal:10,
+    paddingHorizontal: 25,
+    borderRadius: 10,
+    elevation: 3,
+    backgroundColor: '#358c2d'
+  },
+  bottomView: {
+    width: '100%',
+    height: 70,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#cccccc',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', //Here is the trick
+    bottom: 0, //Here is the trick
+    paddingBottom:20,
   },
 
 })

@@ -60,7 +60,7 @@ export default function App() {
           options={{
             title: 'Tinder',
             headerStyle: {
-              backgroundColor: '#03c2fc',
+              backgroundColor: '#3dd60f',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
