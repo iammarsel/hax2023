@@ -3,32 +3,22 @@ import React, { useContext } from 'react';
 import * as Progress from 'react-native-progress';
 import { MyContext } from '../MyContext';
 export default function Home({ navigation }) {
-    const {level, setLevel,xp,setXP} = useContext(MyContext)
-  
-    const handleIncrease = () => {
-      
-      if (xp >= 0.9){
-        setXP(Number((xp-0.9).toFixed(1)))
-        //setXP(Number((xp).toFixed(1)))
-        setLevel(level+1)
-      } else {
-        setXP(Number((xp + 0.1).toFixed(1)));
-        //setXP(Number((xp).toFixed(1)))
-      }
-
-    };
+    const {level, setLevel,xp,setXP, all_recipes, selectAll,sorted_recipes, sortRecipe,fav_recipes, addFav,current_recipe,setCurrent } = useContext(MyContext)
   return (
     <SafeAreaView style={{flex: 1}}>
     <View style={styles.container}>
       <Text style={styles.title}>Favorite Recipes</Text>
       <Progress.Bar progress={xp} width={300} height={10} color={'green'} />
       <Text style={styles.title2}>{xp*100}% XP | Level {level}</Text>
+      <Text style={styles.title2}> Level {all_recipes.ButterChicken.ingredients}</Text>
 
         <ScrollView>
         <View style={styles.recipe}>
             <Text style={styles.title2}>Butter Chicken</Text>
             <Text style={styles.difficulty}>Medium</Text>
-            <Pressable onPress={handleIncrease} style={styles.button}>
+            <Pressable onPress={() => {
+        navigation.navigate("Details")
+      }} style={styles.button}>
             <Text style={styles.button_text}>Details</Text>
             </Pressable>
         </View>

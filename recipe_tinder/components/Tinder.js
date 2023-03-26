@@ -30,7 +30,7 @@ const images = [
 
 ];
 
-export default function Tinder() {
+export default function Tinder({navigation}) {
 
   const [selectedImage, setSelectedImage] = useState(null);
 

@@ -5,7 +5,9 @@ import Favorites from './components/Favorites';
 import GetIngredientsList from './components/GetIngredientsList';
 import Home from './components/Home';
 import { MyProvider } from './MyContext';
+import { RecipeContext } from './RecipeContext';
 import GetIngredients from './components/GetIngredients';
+import Details from './components/Details';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { LogBox } from 'react-native';
@@ -74,6 +76,24 @@ export default function App() {
           component={Favorites}
           options={{
             title: 'Favorites',
+            headerStyle: {
+              backgroundColor: '#03c2fc',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerShown: false,
+            gestureEnabled: true,
+          }}
+        />
+
+          
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{
+            title: 'Details',
             headerStyle: {
               backgroundColor: '#03c2fc',
             },
