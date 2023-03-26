@@ -23,7 +23,17 @@ export const MyProvider = (props) => {
   const addFav = (key, value) => {
     setFav({ ...fav_recipes, [key]: value });
   }
-
+  const sortRecipes = (ingredients) => {
+    Object.keys(all_recipes).map((item, index) => {
+      for (let i = 0; i < ingredients.length; i++) {
+        if (ingredients[i] in all_recipes[item].ingredients){
+          console.log('hi')
+          addSorted(item,all_recipes[item]);
+          break;
+        }
+      };
+    });
+  }
   // Function to remove a key-value pair from the object
   const removeFav = (key) => {
     const fav_recipes = { ...fav_recipes };
@@ -44,7 +54,7 @@ export const MyProvider = (props) => {
   }
 
 
-  const contextValue = { xp, setXP, level, setLevel, all_recipes, setAll,sorted_recipes, addSorted,removeSorted,fav_recipes, addFav,removeFav,current_recipe,setCurrent };
+  const contextValue = { xp, setXP, level, setLevel, all_recipes, setAll,sorted_recipes, sortRecipes, addSorted,removeSorted,fav_recipes, addFav,removeFav,current_recipe,setCurrent };
   
   return (
     <MyContext.Provider value={contextValue}>
