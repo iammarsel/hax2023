@@ -67,6 +67,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     alignItems: 'center'
   },
+  logo: {
+    borderRadius: 100,
+    elevation: 10,
+    shadowColor: '#3ccf63',
+
+  },
   title: {
     fontSize: 40,
     lineHeight: 40,
