@@ -10,14 +10,14 @@ const images = [
 
     uri: 'https://www.danishfoodlovers.com/wp-content/uploads/2022/09/Butter-chicken-3.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1',
 
-    details: 'Image 1 Details'
+    details: 'ButterChicken Details'
   },
 
   {
 
     uri: 'https://3.bp.blogspot.com/-ifXTd_QKsrU/VHvGNKhpB2I/AAAAAAAADRg/U0FAG3qKa0U/s1600/1071258.jpg',
 
-    details: 'Image 2 Details'
+    details: 'Palov Details'
 
   },
 
@@ -25,7 +25,7 @@ const images = [
 
     uri: 'https://www.tastingtable.com/img/gallery/the-15-best-additions-to-mac-and-cheese/l-intro-1670687967.jpg',
 
-    details: 'Image 3 Details'
+    details: 'Mac&Cheese 3 Details'
 
   },
 
@@ -33,7 +33,7 @@ const images = [
 
     uri: 'https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/4NIX5ZMIWJEMPFNYBF3HNG575I.png',
 
-    details: 'Image 1 Details'
+    details: 'Burger 1 Details'
 
   },
 
@@ -41,7 +41,7 @@ const images = [
 
     uri: 'https://www.cookingclassy.com/wp-content/uploads/2020/01/chicken-and-rice-15.jpg',
 
-    details: 'Image 1 Details'
+    details: 'Chicekn&Rice Details'
 
   },
 
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
 
     width: 120,
 
-    backgroundColor: '#3dd60f',
+    backgroundColor: '#3ccf63',
 
     borderRadius: 20,
 
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     width: 120,
     height:50,
 
-    backgroundColor: '#d60f0f',
+    backgroundColor: '#f58142',
 
     borderRadius: 20,
 
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#358c2d'
+    backgroundColor: '#3ccf63'
   },
   bottomView: {
     width: '100%',

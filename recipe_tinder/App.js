@@ -58,9 +58,9 @@ export default function App() {
           name="Tinder"
           component={Tinder}
           options={{
-            title: 'Tinder',
+            title: 'Recipes',
             headerStyle: {
-              backgroundColor: '#3dd60f',
+              backgroundColor: '#3ccf63',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {

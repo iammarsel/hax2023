@@ -40,7 +40,7 @@ export default function Home({ navigation }) {
         </ScrollView>
       <View style={styles.bottomView}>
           <Pressable onPress={() => {
-        navigation.navigate("GetIngredients")
+        navigation.navigate("Home")
       }} style={styles.button}>
         <Text style={styles.button_text}>Home</Text>
       </Pressable>
@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 0
   },
-  
   progressBar: {
     height: 20,
     flexDirection: "row",
@@ -98,13 +97,15 @@ const styles = StyleSheet.create({
   },
   recipe:{
     width: '100%',
+    flex:1,
     borderRadius: 10,
     height: 70,
+    marginVertical: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: '#cccccc',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   difficulty:{
     fontSize: 15,
@@ -115,6 +116,8 @@ const styles = StyleSheet.create({
     color: '#f58142',
   },    
   title2: {
+    alignItems: 'center',
+    justifyContent: 'center',
     fontSize: 15,
     lineHeight: 20,
     fontWeight: 'bold',
@@ -122,12 +125,13 @@ const styles = StyleSheet.create({
     color: '#3ccf63',
   },
   button_container: {
-    marginTop: height*0.6
+    marginTop: height*0.6,
   },
   button: {
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
+    marginVertical: 10,
     marginHorizontal:10,
     paddingHorizontal: 25,
     borderRadius: 10,
@@ -138,11 +142,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
-    marginHorizontal:10,
+    marginHorizontal: 10,
     paddingHorizontal: 25,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#019463'
+    backgroundColor: '#3ccf63'
   },
   button_text: {
     fontSize: 16,
@@ -150,5 +154,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });

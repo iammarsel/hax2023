@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { MyContext } from '../MyContext';
 import { View, Text, StyleSheet, Button, Pressable, Dimensions } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function Details({ navigation }) {
   
@@ -17,11 +18,11 @@ export default function Details({ navigation }) {
       setXP(Number((xp - 0.9).toFixed(1)))
       setLevel(level + 1)
     } else {
-      setXP(Number((xp + 0.1).toFixed(1)));
+      setXP(Number((xp + (0.1 * all_recipes[current_recipe].difficulty)).toFixed(1)));
     }
     all_recipes[current_recipe].completed = true
     console.log(all_recipes[current_recipe].ingredients)
-    navigation.navigate("Home")
+    navigation.navigate("Favorites")
   };
   const displayIngredients = () => {
     return all_recipes[current_recipe].ingredients.map((item, index) => {
@@ -34,6 +35,7 @@ export default function Details({ navigation }) {
 
   }
   return (
+    <ScrollView>
     <View style={styles.container}>
       <Text style={styles.title}>{current_recipe}</Text>
       <View style={styles.ingredientsContainer}>
@@ -49,12 +51,13 @@ export default function Details({ navigation }) {
           <Text style={styles.button_text}>Mark Complete</Text>
         </Pressable> :
         <Pressable onPress={()=>{
-          navigation.navigate('Home')
+          navigation.navigate('Favorites')
         }} style={styles.buttona}>
-        <Text style={styles.button_text}>Main Menu</Text>
+        <Text style={styles.button_text}>Mark Complete</Text>
       </Pressable>}
 
     </View>
+    </ScrollView>
   );
 };
 const { height } = Dimensions.get('window');
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: '#3ccf63',
+    color: '#DF5F1C',
   },
   subtitle: {
     fontSize: 15,
@@ -92,6 +95,7 @@ const styles = StyleSheet.create({
   },
   instructions: {
     fontSize: 20,
+    width: '90%',
     marginVertical: 20
   },
   buttona: {
@@ -102,7 +106,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#358c2d'
+    borderWidth: 3,
+    borderColor: '#DF5F1C',
+    marginBottom: 100,
+  },
+  button_text:{
+    color: '#DF5F1C',
   }
 });
 
