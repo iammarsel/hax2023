@@ -33,7 +33,7 @@ export default function Home({ navigation }) {
     <SafeAreaView style={{flex: 1}}>
     <View style={styles.container}>
       <Text style={styles.title}>Favorite Recipes</Text>
-      <Progress.Bar progress={xp} width={300} height={10} color={'green'} />
+      <Progress.Bar progress={xp} width={300} height={10} color={'#3ccf63'} />
       <Text style={styles.title2}>{xp*100}% XP | Level {level}</Text>
         <ScrollView>
         {renderFavRecipes()}
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: '#3ccf63',
+    color: '#DF5F1C',
   },
   recipe:{
     width: '100%',
@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
     paddingHorizontal:10,
     letterSpacing: 0.25,
     color: '#f58142',
-    
   },    
   title2: {
     fontSize: 15,
@@ -143,7 +142,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#358c2d'
+    backgroundColor: '#019463'
   },
   button_text: {
     fontSize: 16,
