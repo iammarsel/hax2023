@@ -5,7 +5,6 @@ import Favorites from './components/Favorites';
 import GetIngredientsList from './components/GetIngredientsList';
 import Home from './components/Home';
 import { MyProvider } from './MyContext';
-import { RecipeContext } from './RecipeContext';
 import GetIngredients from './components/GetIngredients';
 import Details from './components/Details';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, Pressable } from 'react-native';
 
-import { Col, Row, Grid } from "react-native-easy-grid";
+import { Col, Grid } from "react-native-easy-grid";
+
+import { MyContext } from '../MyContext';
 
 const images = [
 
@@ -49,7 +51,12 @@ const images = [
 ];
 
 export default function Tinder() {
-
+  const difficulties = {
+    1:'Easy',
+    2:'Medium',
+    3:'Hard'
+  }
+  const { xp, setXP, level, setLevel, all_recipes, setAll,sorted_recipes, addSorted,removeSorted,fav_recipes, addFav,removeFav,current_recipe,setCurrent } = useContext(MyContext)
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [imageList, setImageList] = useState(images);
@@ -57,7 +64,7 @@ export default function Tinder() {
   const onRemoveImage = (index) => {
 
     const newList = imageList.filter((item, i) => i !== index);
-
+    removeSorted(current_recipe)
     setImageList(newList);
 
   };
@@ -65,9 +72,10 @@ export default function Tinder() {
   const onAddImage = (index) => {
 
     const newList = imageList.filter((item, i) => i !== index);
-
+    addFav(current_recipe,sorted_recipes[current_recipe])
+    removeSorted(current_recipe)
     setSelectedImage(imageList[index]);
-
+    console.log(fav_recipes)
     setImageList(newList);
 
   };
@@ -94,7 +102,7 @@ export default function Tinder() {
 
               <TouchableOpacity style={styles.addButton} onPress={() => onAddImage(index)}>
 
-                <Image source={require('E:/USF/USF coding/usf_hackathon/hax2023/recipe_tinder/assets/heart.png')} style={styles.addButtonImg} />
+                <Image source={require('../assets/heart.png')} style={styles.addButtonImg} />
 
               </TouchableOpacity>
 
@@ -104,7 +112,7 @@ export default function Tinder() {
 
               <TouchableOpacity style={styles.removeButton} onPress={() => onRemoveImage(index)}>
 
-                <Image source={require('E:/USF/USF coding/usf_hackathon/hax2023/recipe_tinder/assets/dislike.png')} style={styles.addButtonImg} />
+                <Image source={require('../assets/dislike.png')} style={styles.addButtonImg} />
 
               </TouchableOpacity>
 
@@ -240,9 +248,11 @@ const styles = StyleSheet.create({
 
   image: {
 
-    width: 300,
+    width: 400,
 
-    height: 300,
+    height: 400,
+
+    paddingBottom: 50,
 
     resizeMode: 'cover',
 

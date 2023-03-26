@@ -17,20 +17,21 @@ export default function Home({ navigation }) {
       source={require('../assets/RecipeLabs_logo.png')}
        />
        
-       <View style={styles.buttons} >
-        <Pressable
-          onPress={() => {
-            navigation.navigate('Tinder');
-          }}style={styles.button}>
-          <Text style={styles.button_text}>Explore Recipes</Text>
-        </Pressable>
-        </View>
+       
          <View style={styles.buttons} >
         <Pressable
           onPress={() => {
             navigation.navigate('GetIngredients');
           }}style={styles.button}>
           <Text style={styles.button_text}>Create New Request</Text>
+        </Pressable>
+        </View>
+        <View style={styles.buttons} >
+        <Pressable
+          onPress={() => {
+            navigation.navigate('Tinder');
+          }}style={styles.button}>
+          <Text style={styles.button_text}>Explore Recipes</Text>
         </Pressable>
         </View>
         <View style={styles.buttons} >

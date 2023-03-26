@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import {
   View,
   Text,
@@ -13,7 +13,7 @@ import {
   Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
+import { MyContext } from '../MyContext';
 export default function AA({ navigation }) {
   const [text, setText] = useState('');
   const [ingredients, setIngredients] = useState([
@@ -23,7 +23,7 @@ export default function AA({ navigation }) {
     'Yogurt',
     'Eggs',
   ]);
-
+  const {level, setLevel,xp,setXP, all_recipes, selectAll,sorted_recipes, sortRecipe,fav_recipes, addFav,current_recipe,setCurrent } = useContext(MyContext)
   function handleAdd() {
     if (text.length > 0) {
       setIngredients([...ingredients, text]);

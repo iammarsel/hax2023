@@ -4,25 +4,39 @@ import * as Progress from 'react-native-progress';
 import { MyContext } from '../MyContext';
 export default function Home({ navigation }) {
     const {level, setLevel,xp,setXP, all_recipes, selectAll,sorted_recipes, sortRecipe,fav_recipes, addFav,current_recipe,setCurrent } = useContext(MyContext)
-  return (
+    fav_keys = Object.keys(all_recipes);
+
+    difficulties = {
+      1:'Easy',
+      2:'Medium',
+      3:'Hard'
+    }
+
+    const renderFavRecipes = () => {
+      return fav_keys.map((key) => {
+        return (
+        
+        <View style={styles.recipe}>
+        <Text style={styles.title2}>{key}</Text>
+        <Text style={styles.difficulty}>{difficulties[all_recipes[key].difficulty]}</Text>
+        <Pressable alignSelf="flex-end" onPress={() => {
+    setCurrent(key)
+    navigation.navigate("Details")
+  }} style={styles.button}>
+        <Text style={styles.button_text}>Details</Text>
+        </Pressable>
+        </View>
+     );
+    });
+    }
+    return (
     <SafeAreaView style={{flex: 1}}>
     <View style={styles.container}>
       <Text style={styles.title}>Favorite Recipes</Text>
       <Progress.Bar progress={xp} width={300} height={10} color={'green'} />
       <Text style={styles.title2}>{xp*100}% XP | Level {level}</Text>
-      <Text style={styles.title2}> Level {all_recipes.ButterChicken.ingredients}</Text>
-
         <ScrollView>
-        <View style={styles.recipe}>
-            <Text style={styles.title2}>Butter Chicken</Text>
-            <Text style={styles.difficulty}>Medium</Text>
-            <Pressable onPress={() => {
-        navigation.navigate("Details")
-      }} style={styles.button}>
-            <Text style={styles.button_text}>Details</Text>
-            </Pressable>
-        </View>
-
+        {renderFavRecipes()}
         </ScrollView>
       <View style={styles.bottomView}>
           <Pressable onPress={() => {
@@ -99,6 +113,7 @@ const styles = StyleSheet.create({
     paddingHorizontal:10,
     letterSpacing: 0.25,
     color: '#f58142',
+    
   },    
   title2: {
     fontSize: 15,
