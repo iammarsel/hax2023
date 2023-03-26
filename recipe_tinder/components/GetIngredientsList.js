@@ -66,7 +66,7 @@ export default function AA({ navigation }) {
 
         <Pressable
           onPress={() => {
-            navigation.replace('Tinder');
+            navigation.navigate('Tinder');
           }}
           style={styles.button}
         >

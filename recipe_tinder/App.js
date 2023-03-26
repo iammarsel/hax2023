@@ -25,7 +25,7 @@ export default function App() {
           component={GetIngredients}
           options={{
             headerShown: false,
-            gestureEnabled: false
+            gestureEnabled: true,
           }}
         />
 
@@ -33,7 +33,6 @@ export default function App() {
           name="GetIngredientsList"
           component={GetIngredientsList}
           options={{
-
             headerShown: false,
             gestureEnabled: true,
             title: 'GetIngredientsList',
@@ -59,7 +58,7 @@ export default function App() {
             headerTitleStyle: {
               fontWeight: 'bold',
             },
-            gestureEnabled: false
+            gestureEnabled: true
           }}
         />
 

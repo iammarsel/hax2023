@@ -9,13 +9,13 @@ export default function Tinder({ navigation }) {
       <Text style={styles.title}>Welcome</Text>
 
       <Pressable onPress={() => {
-        navigation.replace("GetIngredients")
+        navigation.navigate("GetIngredients")
       }} style={styles.button}>
         <Text style={styles.button_text}>Go to Tinder</Text>
       </Pressable>
       <View style={styles.box1} />
       <Pressable onPress={() => {
-        navigation.replace("GetIngredients")
+        navigation.navigate("GetIngredients")
       }} style={styles.button}>
         <Text style={styles.button_text}>Go to Tinder</Text>
       </Pressable>

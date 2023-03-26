@@ -7,19 +7,19 @@ export default function Home({ navigation }) {
       <Text style={styles.title}>Welcome</Text>
 
       <Pressable onPress={() => {
-        navigation.replace("Tinder")
+        navigation.navigate("Tinder")
       }} style={styles.button}>
         <Text style={styles.button_text}>Explore Recipes</Text>
       </Pressable>
 
       <Pressable onPress={() => {
-        navigation.replace("GetIngredients")
+        navigation.navigate("GetIngredients")
       }} style={styles.button}>
         <Text style={styles.button_text}>Create new Request</Text>
       </Pressable>
       
       <Pressable onPress={() => {
-        navigation.replace("Favorites")
+        navigation.navigate("Favorites")
       }} style={styles.button}>
         <Text style={styles.button_text}>Go to Favorites</Text>
       </Pressable>

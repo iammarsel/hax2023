@@ -23,7 +23,7 @@ export default function GetIngredients({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Ingredients Here</Text>
+      <Text style={styles.title}>Scan your fridge here:</Text>
 
       {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
       
@@ -34,7 +34,7 @@ export default function GetIngredients({ navigation }) {
       />
       </Pressable>
       <Pressable onPress={() => {
-        navigation.replace("GetIngredientsList")
+        navigation.navigate("GetIngredientsList")
       }} style={styles.button}>
         <Text style={styles.button_text}>Go to the List</Text>
       </Pressable>
@@ -46,7 +46,7 @@ const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#000000',
+    backgroundColor: '#ffffff',
     flex: 1,
     paddingTop: height*0.1,
     paddingHorizontal: 40,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: '#03c2fc',
+    color: '#3ccf63',
   },
   button: {
     alignItems: 'center',
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#03c2fc',
+    backgroundColor: '#3ccf63',
     marginTop: 20
   },
   fridge: {
