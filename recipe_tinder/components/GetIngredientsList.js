@@ -13,16 +13,36 @@ export default function AA({ navigation }) {
     }
   }
 
+  const handleRemove = (index) => {
+    const newIngredients = [...ingredients];
+    newIngredients.splice(index, 1);
+    setIngredients(newIngredients);
+  }
+
+  const renderLeftActions = (progress, dragX, index) => {
+    const trans = dragX.interpolate({
+      inputRange: [0, 50, 100],
+      outputRange: [0, 0, 1],
+    });
+    return (
+      <Pressable onPress={() => handleRemove(index)} style={styles.deleteButton}>
+        <MaterialIcons name="delete" size={30} color="white" />
+      </Pressable>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View contentContainerStyle={styles.scrollContainer}>
         <Text style={styles.title}>Ingredients Here</Text>
 
-        <ScrollView style={styles.listContainer} showsVerticalScrollIndicator={true}>
-          {ingredients.map((item, index) => (
-            <Text style={styles.ingredientsText} key={index}>- {item}</Text>
-          ))}
-        </ScrollView>
+        <View style={styles.listContainerWrapper}>
+          <ScrollView style={styles.listContainer}>
+            {ingredients.map((item, index) => (
+                <Text style={styles.ingredientsText}>- {item}</Text>
+            ))}
+          </ScrollView>
+        </View>
 
         <TextInput
           style={styles.input}
@@ -50,7 +70,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingTop: 150,
-    backgroundColor: '#000000',
+    backgroundColor: '#fff',
   },
   scrollContainer: {
     paddingHorizontal: 0,
@@ -65,7 +85,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: '#03c2fc',
+    color: '#3ccf63',
   },
   button: {
     alignItems: 'center',
@@ -74,20 +94,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#03c2fc',
+    backgroundColor: '#3ccf63',
     marginTop: 20
+  },
+  listContainerWrapper: {
+    flex: 1,
+    backgroundColor: 'white',
+    minHeight: 400, 
   },
   listContainer: {
     flex: 1,
     paddingTop: 22,
     paddingBottom: 20,
-    minHeight: 400, 
   },
   ingredientsText: {
     paddingLeft: 0,
     paddingVertical: 15,
     fontSize: 25,
-    color: 'white',
+    color: 'black',
     height: 60,
   },
   input: {
@@ -98,12 +122,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    backgroundColor: '#1c1c1c',
-    color: 'white',
+    backgroundColor: '#3ccf630a',
+    color: '#3ccf63',
     fontSize: 20,
     height: 40,
     borderWidth: 0.5,
     borderRadius: 5,
-    borderColor: '#a9a9a9',
+    borderColor: '#3ccf63',
   }
 });
